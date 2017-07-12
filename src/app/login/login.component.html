@@ -1,0 +1,32 @@
+ <h1>Login App</h1>
+ <nav>
+      <a routerLink="/login" routerLinkActive="active">Login Page</a>
+      <a routerLink="/heroes" routerLinkActive="active">Profile Page</a>
+    </nav>
+`<form [formGroup]="loginForm" (ngSubmit)="login()">
+  
+  <p>
+    <label for="email">email</label>
+    <input formControlName="email">
+  </p>
+  <p *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.touched">
+    <small *ngIf="loginForm.controls.email.errors.email">
+      email is invalid
+    </small>
+     <small *ngIf="loginForm.controls.email.errors.required">
+      email is required
+    </small>
+    
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input type="password" formControlName="password">
+  </p>
+  <p *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+    
+    Password is required
+  </p>
+  
+
+  <input type="submit" value="submit" [disabled]="!loginForm.valid">
+</form>
