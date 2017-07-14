@@ -5,6 +5,10 @@
     </nav>
 `<form [formGroup]="loginForm" (ngSubmit)="login()">
   
+  <p *ngIf="loginForm.errors && loginForm.errors.invalidLogin">
+    Username or password is invalid
+  </p>
+
   <p>
     <label for="email">email</label>
     <input formControlName="email">
